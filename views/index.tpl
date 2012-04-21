@@ -9,7 +9,7 @@
 
 	<!-- Relations -->
 	<link rel="shortcut icon" href="/static/favicon.ico">
-	<link href="/static/bootstrap.css" rel="stylesheet">
+	<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 	<link href="/static/style.css" rel="stylesheet">
 	<link href="/static/prettify.css" rel="stylesheet">
@@ -233,5 +233,6 @@ client.send();
 		</footer>
 
 	</div> <!-- /container -->
+	<script type="text/javascript" src="prettify.js"></script>
 </body>
 </html>
