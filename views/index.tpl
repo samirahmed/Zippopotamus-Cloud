@@ -233,6 +233,6 @@ client.send();
 		</footer>
 
 	</div> <!-- /container -->
-	<script type="text/javascript" src="prettify.js"></script>
+	<script type="text/javascript" src="/static/prettify.js"></script>
 </body>
 </html>
