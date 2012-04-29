@@ -13,8 +13,6 @@ class static_files():
     def serve(path):
         return static_file(path, root='./static')
 
-    @route('/:country')
-        return static_file(country,root='./listings')
 
 class index():
     '''
