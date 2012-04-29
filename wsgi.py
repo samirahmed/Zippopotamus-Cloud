@@ -13,6 +13,9 @@ class static_files():
     def serve(path):
         return static_file(path, root='./static')
 
+    @route('/:country')
+        return static_file(country,root='./listings')
+
 class index():
     '''
     Class for dynamic URLs and queries
@@ -23,13 +26,9 @@ class index():
     def homepage():
         return {}
 
-    @route('/gb/:code', method='GET') 
-    def gb(code):
-       return '<b> lolz uk '+ code +' </b>'
-
-    @route('/:country', method='GET')
-    def index(country):
-        return '<b>%s listing</b>' % (country)
+#    @route('/:country', method='GET')
+#    def index(country):
+#        return '<b>%s listing</b>' % (country)
 
     @route('/:country/:post', method='GET')
     def index(country,post):
@@ -81,14 +80,13 @@ def standard_query(country,code):
                             default=json_util.default)                 # Using pymongo json settings
 
         return (isFound,content)    # Return True and JSON results
-    
+
 with open(os.path.expanduser('~/environment.json')) as f:
-    env = json.load(f)
+    env = json.load(f)                                      # Extract environment variables
 
-connection = Connection( env['DOTCLOUD_DB_MONGODB_URL'] )
-db = Database(connection,'zip')
+connection = Connection( env['DOTCLOUD_DB_MONGODB_URL'] )   # Connect to be w/ env info
+db = Database(connection,'zip')                             # Get handle to ZIP db
 
-application = default_app()
+application = default_app()                                 # WSGI application
 
-#run (host='localhost', port=8080)
-
+#run (host='localhost', port=8080)                          # Local Testing
