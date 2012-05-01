@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+	
+	<title>Example Zippopotamus</title>
+	<link href="../static/bootstrap/css/jquery-ui-bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link rel='stylesheet' href='../static/bootstrap/css/bootstrap.css' type="text/css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	
+	<script>
+		$(function() {
+			
+			$('#city').focus( function() {
+				
+				$(this).autocomplete( "search", "" );
+				
+			});
+			
+			// OnKeyDown Function
+			$("#zip").keyup(function() {
+				var zip_in = $(this);
+				var zip_box = $('#zipbox');
+				
+				if (zip_in.val().length<5)
+				{
+					zip_box.removeClass('error success');
+				}
+				else if ( zip_in.val().length>5)
+				{
+					zip_box.addClass('error').removeClass('success');
+				}
+				else if ((zip_in.val().length == 5) ) 
+				{
+					
+					// Make HTTP Request
+					$.ajax({
+						url: "http://zippo-zippopotamus.dotcloud.com/fr/" + zip_in.val(),
+						cache: false,
+						dataType: "json",
+						type: "GET",
+						data: "fr/" + zip_in.val(),
+					  success: function(result, success) {
+							// FR Post Code Returns multiple location
+							suggestions = [];
+							for ( ii in result['places']){
+								suggestions.push(result['places'][ii]['place name']);
+							}
+							$("#city").autocomplete({ source : suggestions , delay:50, disabled: false, minLength:0 });
+							if ( suggestions.length > 0){
+								$('#city').placeholder = suggestions[0];
+							}
+							zip_box.addClass('success').removeClass('error');
+						},
+						error: function(result, success) {
+							zip_box.removeClass('success').addClass('error');
+						}
+					});
+				}
+	});
+
+		});
+			
+	</script>
+</head>
+<body>
+	<br/	>
+	<div class="container">
+	<div class="span8">
+	<div class='hero-unit'>
+		<h2>Zippoptamus pour la France</h2>
+		<hr/>
+		<p>Essayez de taper un code postal, par exemple <b>71150</b></p>
+		<p><i style="font-size:12px;">Try typing a postal code, for example <b>71150</b></i></p>
+		<br/>
+		<form action="#" method="post" class="form fancy-form">
+
+			<fieldset>
+				<legend>Adresses françaises <i style='font-size:12px;'>(French Address)</i></legend>
+				<br/>
+				<div>
+					<div id="zipbox" class="control-group">
+						<label for="zip">Code Postal</label>
+						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Tapez votre code postal"/>
+					</div>	
+				</div>
+				<div>
+					<div class="control-group" >
+						<label for="city">Ville</label>
+						<input type="text" name="city" id="city" placeholder="D'abord taper votre code postal" />
+					</div>
+				</div>
+
+				<div>
+					<input type="submit" class='btn btn-success btn-large' value="Envoi">
+				</div>
+			</fieldset>
+		</form>	
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>

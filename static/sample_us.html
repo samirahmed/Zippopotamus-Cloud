@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+	
+	<title>Using Ziptastic</title>
+	
+	<link rel='stylesheet' href='../static/bootstrap/css/bootstrap.css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		$(function() {
+			
+			// OnKeyDown Function
+			$("#zip").keyup(function() {
+				var zip_in = $(this);
+				var zip_box = $('#zipbox');
+				
+				if (zip_in.val().length<5)
+				{
+					zip_box.removeClass('error success');
+				}
+				else if ( zip_in.val().length>5)
+				{
+					zip_box.addClass('error').removeClass('success');
+				}
+				else if ((zip_in.val().length == 5) ) 
+				{
+					
+					// Make HTTP Request
+					$.ajax({
+						url: "http://zippo-zippopotamus.dotcloud.com/us/" + zip_in.val(),
+						cache: false,
+						dataType: "json",
+						type: "GET",
+						data: "us/" + zip_in.val(),
+					  success: function(result, success) {
+							// US Zip Code Records Officially Map to only 1 Primary Location
+							places = result['places'][0];
+							$("#city").val(places['place name']);
+							$("#state").val(places['state']);
+							zip_box.addClass('success').removeClass('error');
+						},
+						error: function(result, success) {
+							zip_box.removeClass('success').addClass('error');
+						}
+					});
+				}
+	});
+
+		});
+			
+	</script>
+</head>
+<body>
+	<br/	>
+	<div class="container-fluid">
+	<div class="span7">
+	<div class='hero-unit'>
+		<h2>Zippoptamus</h2>
+		<br/>
+		<p>Try entering a zip code like <b>90210</b> Beverly Hills, CA!</p>
+		<br/>
+		<form action="#" method="post" class="form fancy-form">
+
+			<fieldset>
+				<legend>US Address Autocompletion</legend>
+				<br/>
+				<div>
+					<div id="zipbox" class="control-group">
+						<label for="zip">Zip</label>
+						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Type you ZIP code"/>
+					</div>	
+				</div>
+				<div>
+					<div class="control-group" >
+						<label for="city">City</label>
+						<input type="text" name="city" id="city" placeholder="Type you ZIP above" />
+					</div>
+					<div class="control-group">
+						<label for="state">State</label>
+						<input type="text" name="state" id="state" placeholder="Type you ZIP above" />
+					</div>
+				</div>
+
+				<div>
+					<input type="submit" class='btn btn-success btn-large' value="Submit">
+				</div>
+			</fieldset>
+		</form>	
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>

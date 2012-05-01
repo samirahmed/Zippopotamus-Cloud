@@ -69,10 +69,10 @@ img {
 }
 .hero-unit {
   padding: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   margin-left: 30px;
  margin-right: 30px;
-margin-top:50px;
+margin-top:20px;
 width:auto;
   background-color: #fff2f2;
   -webkit-border-radius: 6px;
@@ -107,4 +107,16 @@ hr {
   border: 0;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #bbb;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  color: #000;
+  text-decoration: none;
+  background-color: #fff2f2;
+}
+a.example
+{
+color:#a22;
+font-size:18px;
 }

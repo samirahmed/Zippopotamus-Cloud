@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+	
+	<title>Using Ziptastic</title>
+	<link href="../static/bootstrap/css/jquery-ui-bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link rel='stylesheet' href='../static/bootstrap/css/bootstrap.css' type="text/css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	
+	<script>
+		$(function() {
+			
+			$('#city').focus( function() {
+				
+				$(this).autocomplete( "search", "" );
+				
+			});
+			
+			// OnKeyDown Function
+			$("#zip").keyup(function() {
+				var zip_in = $(this);
+				var zip_box = $('#zipbox');
+				
+				if (zip_in.val().length<5)
+				{
+					zip_box.removeClass('error success');
+				}
+				else if ( zip_in.val().length>5)
+				{
+					zip_box.addClass('error').removeClass('success');
+				}
+				else if ((zip_in.val().length == 5) ) 
+				{
+					
+					// Make HTTP Request
+					$.ajax({
+						url: "http://zippo-zippopotamus.dotcloud.com/es/" + zip_in.val(),
+						cache: false,
+						dataType: "json",
+						type: "GET",
+						data: "es/" + zip_in.val(),
+					  success: function(result, success) {
+							// FR Post Code Returns multiple location
+							cuidad = [];
+							set = {};
+							provincia = [];
+							
+							// Copy cities and all possible states over
+							for ( ii in result['places']){
+								cuidad.push(result['places'][ii]['place name']);
+								
+								// Get only unique values
+								state = result['places'][ii]['state'] ;
+								if ( !(state in set) )
+								{
+									set[state] = true;
+									provincia.push(state);
+								}
+							}
+														
+							$("#city").autocomplete({ source : cuidad , delay:50, disabled: false, minLength:0 });
+							$("#state").autocomplete({ source: provincia, delay:50 , disabled: false, minLength:0 });
+							if (result['places'].length > 0){
+								$('#city').val(cuidad[0]);
+								$('#state').val(provincia[0]); 
+							}
+							zip_box.addClass('success').removeClass('error');
+						},
+						error: function(result, success) {
+							zip_box.removeClass('success').addClass('error');
+						}
+					});
+				}
+	});
+
+		});
+			
+	</script>
+</head>
+<body>
+	<br/	>
+	<div class="container-fluid">
+	<div class="span7">
+	<div class='hero-unit'>
+		<h2>Zippopotamus para España</h2>
+		<hr/>
+		<p>Intente escribir un código postal, por ejemplo <b>31013</b></p>
+		<p><i style="font-size:12px;">Try typing a postal code, for example <b>31013</b></i></p>
+		<br/>
+		<form action="#" method="post" class="form fancy-form">
+
+			<fieldset>
+				<legend>Autocompletar para direcciones españolas<i style='font-size:12px;'> (Spanish Address)</i></legend>
+				<br/>
+				<div>
+					<div id="zipbox" class="control-group">
+						<label for="zip">Código postal</label>
+						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Tapez votre code postal"/>
+					</div>	
+				</div>
+				<div>
+					<div class="control-group" >
+						<label for="zip">Ciudad</label>
+						<input type="text" name="city" id="city"  />
+					</div>
+				</div>
+				<div>
+					<div class="control-group" >
+						<label for="zip">Provincia</label>
+						<input type="text" name="state" id="state" />
+					</div>
+				</div>
+				<div>
+					<input type="submit" class='btn btn-success btn-large' value="Enviar">
+				</div>
+			</fieldset>
+		</form>	
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>
