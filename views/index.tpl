@@ -66,11 +66,11 @@
 		<div id="what" class="hero-unit">
 			<div class="row-fluid">
 				<div class="span7">
-					<h1>Zip Code Galore</h1> 
+					<h1>Changes coming!</h1> 
 					<p><h2>Zip·po·pot·amus  &ensp;&ensp;/&#x02c8;zip&#x014d;p&auml;t&#x0259;m&#x0259;s/</h2></p>
 					<p>Postal Codes and Zip Codes made easy</p>
 					<li><p>Free API with JSON Response Format</p></li>
-					<li><p>Over 50 Countries Supported</p></li>
+					<li><p>Over 60 Countries Supported</p></li>
 					<li><p>Perfect for Form Autocompletion</p></li>
 					<li><p>Open for Crowdsourcing and Contribution</p></li>
 				</div>
