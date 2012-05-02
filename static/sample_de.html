@@ -5,7 +5,7 @@
 <head>
 	<meta charset='UTF-8'>
 	
-	<title>Sample US - Zippopotamus</title>
+	<title>Sample DE Zippopotamus</title>
 	
 	<link rel='stylesheet' href='../static/bootstrap/css/bootstrap.css'>
 
@@ -31,13 +31,13 @@
 					
 					// Make HTTP Request
 					$.ajax({
-						url: "http://zippo-zippopotamus.dotcloud.com/us/" + zip_in.val(),
+						url: "http://api.zippopotam.us/de/" + zip_in.val(),
 						cache: false,
 						dataType: "json",
 						type: "GET",
-						data: "us/" + zip_in.val(),
+						data: "de/" + zip_in.val(),
 					  success: function(result, success) {
-							// US Zip Code Records Officially Map to only 1 Primary Location
+							// German Post Code Records Officially Map to only 1 Primary Location
 							places = result['places'][0];
 							$("#city").val(places['place name']);
 							$("#state").val(places['state']);
@@ -59,29 +59,31 @@
 	<div class="container">
 	<div class="span8">
 	<div class='hero-unit'>
-		<h2>Zippoptamus</h2>
-		<br/>
-		<p>Try entering a zip code like <b>90210</b> Beverly Hills, CA!</p>
+		<h2>Zippoptamus für Deutschland</h2>
+		<hr/>
+		<p>Versuchen Sie, eine Postleitzahl, z.B. 80333. München, Bayern </p>
+		<p><i style="font-size:12px;">Try entering a zip code like <b>80333</b> Munich, Bavaria</i></p>
 		<br/>
 		<form action="#" method="post" class="form fancy-form">
 
 			<fieldset>
-				<legend>US Address Autocompletion</legend>
+				<legend>Deutsch-Adresse Autovervollständigung</legend>
+				<p><i style="font-size:12px;">German Address Autocompletion</i></p>
 				<br/>
 				<div>
 					<div id="zipbox" class="control-group">
-						<label for="zip">Zip</label>
-						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Type you ZIP code"/>
+						<label for="zip">PLZ</label>
+						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Geben Sie Ihre Postleitzahl hier"/>
 					</div>	
 				</div>
 				<div>
 					<div class="control-group" >
-						<label for="city">City</label>
-						<input type="text" name="city" id="city" placeholder="Type you ZIP above" />
+						<label for="city">Stadt</label>
+						<input type="text" name="city" id="city" placeholder="" />
 					</div>
 					<div class="control-group">
-						<label for="state">State</label>
-						<input type="text" name="state" id="state" placeholder="Type you ZIP above" />
+						<label for="state">Bundesland</label>
+						<input type="text" name="state" id="state" placeholder="" />
 					</div>
 				</div>
 

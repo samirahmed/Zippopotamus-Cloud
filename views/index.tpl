@@ -55,7 +55,7 @@
 							<a href="#samples" data-toggle="dropdown" class="dropdown-toggle">Examples<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 			                     <li><a href="/static/sample_us.html">USA</a></li>
-			                     <li><a href="#">Germany (Coming Soon)</a></li>
+			                     <li><a href="/static/sample_de.html">Germany</a></li>
 				                 <li><a href="/static/sample_fr.html">France</a></li>
 								 <li><a href="/static/sample_es.html">Spain</a></li>
 							</ul>
@@ -74,7 +74,7 @@
 		<br/>
 		<div class="alert alert-danger fade in">
 		<a class="close" data-dismiss="alert" >&times;</a>
-		<strong>Heads Up!</strong> To support international post code formats, we have a new response format as of May-1st-2012
+		<strong>Heads Up!</strong> To support international post code formats, we have adopted a new response format as of May-1st-2012
 		</div>
 
 		<!-- Main hero unit for a primary marketing message or call to action -->
@@ -114,7 +114,7 @@
 					<a href="/static/sample_us.html" class="example" >USA</a>
 				</div>
 				<div class="span2">
-					<a href="#" class="example">Germany</a>
+					<a href="/static/sample_us.html" class="example">Germany</a>
 				</div>
 				<div class="span2">
 					<a href="/static/sample_es.html" class="example" >Spain</a>
