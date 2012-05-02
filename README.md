@@ -1,14 +1,16 @@
 # Zippopotamus Cloud
 
-This is a repository for global postal code API [zippopotam.us](http://www.zippopotam.us)
+This is a repository for  [Zippopotamus](http://www.zippopotam.us) the global postal code API
 
 Zippopotamus is hosted by [dotCloud](http://dotCloud.com). This repo is used to build and maintain the site.
 
-If you want to contribute to the improving the site, back-end, front-end etc. This is fork away and submit pull requests. 
+If you want to contribute to the improving the site, back-end, front-end etc. Just fork away and submit pull requests. 
 
 ### Sample Implementations 
 
 Checkout the `static/` folder to see some of the sample implementations of Zippopotamus for inspiration and examples for how to implement Zippopotamus API for use in your website etc.
+
+If you want to share an implementation, we would love to post example cases of Zippopotamus on our homepage.
 
 ### Response Format
 
