@@ -114,7 +114,7 @@
 					<a href="/static/sample_us.html" class="example" >USA</a>
 				</div>
 				<div class="span2">
-					<a href="/static/sample_us.html" class="example">Germany</a>
+					<a href="/static/sample_de.html" class="example">Germany</a>
 				</div>
 				<div class="span2">
 					<a href="/static/sample_es.html" class="example" >Spain</a>
