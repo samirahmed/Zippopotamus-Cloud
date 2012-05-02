@@ -3,6 +3,8 @@
 <html>
 
 <head>
+
+
 	<meta charset='UTF-8'>
 	
 	<title>Sample US - Zippopotamus</title>
@@ -12,6 +14,13 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
 		$(function() {
+			
+			$(document).ready( function() 
+			{
+				$('#citybox').hide();
+				$('#statebox').hide();
+				
+			});
 			
 			// OnKeyDown Function
 			$("#zip").keyup(function() {
@@ -37,6 +46,10 @@
 						type: "GET",
 						data: "us/" + zip_in.val(),
 					  success: function(result, success) {
+							// Make the city and state boxes visible
+							$('#citybox').slideDown();
+							$('#statebox').slideDown();
+						
 							// US Zip Code Records Officially Map to only 1 Primary Location
 							places = result['places'][0];
 							$("#city").val(places['place name']);
@@ -53,6 +66,22 @@
 		});
 			
 	</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30975659-1']);
+	  _gaq.push(['_setDomainName', 'zippopotam.us']);
+	    _gaq.push(['_trackPageview']);
+
+		  (function() {
+		      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					    })();
+
+						</script>
+
 </head>
 <body>
 	<br/	>
@@ -75,13 +104,13 @@
 					</div>	
 				</div>
 				<div>
-					<div class="control-group" >
+					<div id="citybox" class="control-group" >
 						<label for="city">City</label>
-						<input type="text" name="city" id="city" placeholder="Type your ZIP above" />
+						<input type="text" name="city" id="city" placeholder="" />
 					</div>
-					<div class="control-group">
+					<div id="statebox" class="control-group">
 						<label for="state">State</label>
-						<input type="text" name="state" id="state" placeholder="Type your ZIP above" />
+						<input type="text" name="state" id="state" placeholder="" />
 					</div>
 				</div>
 

@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset='UTF-8'>
 	
@@ -13,6 +12,13 @@
 	
 	<script>
 		$(function() {
+
+			$(document).ready( function() {
+			
+				$('#citybox').hide();
+				$('#statebox').hide();
+
+			});
 			
 			$('#city').focus( function() {
 				
@@ -44,7 +50,12 @@
 						type: "GET",
 						data: "es/" + zip_in.val(),
 					  success: function(result, success) {
-							// FR Post Code Returns multiple location
+	
+				  			// Slide down the options
+							$('#citybox').slideDown();
+							$('#statebox').slideDown();
+
+							// ES Post Code Returns multiple location
 							cuidad = [];
 							set = {};
 							provincia = [];
@@ -80,6 +91,23 @@
 		});
 			
 	</script>
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-30975659-1']);
+_gaq.push(['_setDomainName', 'zippopotam.us']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
+
 </head>
 <body>
 	<br/	>
@@ -99,17 +127,17 @@
 				<div>
 					<div id="zipbox" class="control-group">
 						<label for="zip">Código postal</label>
-						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Tapez votre code postal"/>
+						<input type="text" class='' pattern="[0-9]*" name="zip" id="zip" placeholder="Escriba su código postal aquí"/>
 					</div>	
 				</div>
 				<div>
-					<div class="control-group" >
+					<div id='citybox' class="control-group" >
 						<label for="zip">Ciudad</label>
 						<input type="text" name="city" id="city"  />
 					</div>
 				</div>
 				<div>
-					<div class="control-group" >
+					<div id='statebox' class="control-group" >
 						<label for="zip">Provincia</label>
 						<input type="text" name="state" id="state" />
 					</div>

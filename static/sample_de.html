@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset='UTF-8'>
 	
@@ -12,7 +11,15 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
 		$(function() {
+		
+			// Disable City and State on Load
+			$(document).ready( function() {
 			
+				$('#city').attr('disabled','disabled');
+				$('#state').attr('disabled','disabled');
+
+			});
+
 			// OnKeyDown Function
 			$("#zip").keyup(function() {
 				var zip_in = $(this);
@@ -37,6 +44,11 @@
 						type: "GET",
 						data: "de/" + zip_in.val(),
 					  success: function(result, success) {
+							// Enable the Input for City or State
+							
+							$('#city').removeAttr('disabled');
+							$('#state').removeAttr('disabled');
+
 							// German Post Code Records Officially Map to only 1 Primary Location
 							places = result['places'][0];
 							$("#city").val(places['place name']);
@@ -53,6 +65,21 @@
 		});
 			
 	</script>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30975659-1']);
+	  _gaq.push(['_setDomainName', 'zippopotam.us']);
+	    _gaq.push(['_trackPageview']);
+
+		  (function() {
+		      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					    })();
+
+						</script>
+
 </head>
 <body>
 	<br/	>
@@ -79,11 +106,11 @@
 				<div>
 					<div class="control-group" >
 						<label for="city">Stadt</label>
-						<input type="text" name="city" id="city" placeholder="" />
+						<input type="text" name="city" id="city" placeholder="Geben Sie Ihre Postleitzahl oben" />
 					</div>
 					<div class="control-group">
 						<label for="state">Bundesland</label>
-						<input type="text" name="state" id="state" placeholder="" />
+						<input type="text" name="state" id="state" placeholder="Geben Sie Ihre Postleitzahl oben" />
 					</div>
 				</div>
 

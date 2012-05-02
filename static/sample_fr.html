@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset='UTF-8'>
 	
@@ -13,7 +12,11 @@
 	
 	<script>
 		$(function() {
+		    $(document).ready( function() {
 			
+				$('#city').attr('disabled','disabled');
+			
+			});	
 			$('#city').focus( function() {
 				
 				$(this).autocomplete( "search", "" );
@@ -44,6 +47,10 @@
 						type: "GET",
 						data: "fr/" + zip_in.val(),
 					  success: function(result, success) {
+
+							// Enable the city box
+							$('#city').removeAttr('disabled');
+							
 							// FR Post Code Returns multiple location
 							suggestions = [];
 							for ( ii in result['places']){
@@ -65,7 +72,24 @@
 		});
 			
 	</script>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30975659-1']);
+	  _gaq.push(['_setDomainName', 'zippopotam.us']);
+	    _gaq.push(['_trackPageview']);
+
+		  (function() {
+		      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					    })();
+
+	</script>
+
+
 </head>
+
 <body>
 	<br/	>
 	<div class="container">
@@ -88,7 +112,7 @@
 					</div>	
 				</div>
 				<div>
-					<div class="control-group" >
+					<div id="citybox" class="control-group" >
 						<label for="city">Ville</label>
 						<input type="text" name="city" id="city" placeholder="D'abord taper votre code postal" />
 					</div>
