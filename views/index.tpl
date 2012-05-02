@@ -50,9 +50,8 @@
 				<a class="brand" href="#">Zippopotam.us</a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="#">What</a></li>
 						<li class="dropdown" id="samples">
-							<a href="#samples" data-toggle="dropdown" class="dropdown-toggle">Examples<b class="caret"></b></a>
+							<a href="#samples" data-toggle="dropdown" class="dropdown-toggle">Samples<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 			                     <li><a href="/static/sample_us.html">USA</a></li>
 			                     <li><a href="/static/sample_de.html">Germany</a></li>
@@ -62,7 +61,8 @@
 						</li>
 						<li><a href="#where">Countries</a></li>
 						<li><a href="#who">Who</a></li>
-						<li><a href="https://github.com/crowell/Zippopotamus">Contribute</a></li>
+						<li><a href="https://github.com/samirahmed/Zippopotamus-Cloud">Code</a></li>
+						<li><a href="https://github.com/crowell/Zippopotamus">CrowdSource</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
