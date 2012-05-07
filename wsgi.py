@@ -1,8 +1,10 @@
 from bottle import route, default_app, static_file, view, response, run
 from pymongo import Connection, json_util
 from pymongo.database import Database
+from bson.son import SON
 import json
 import os
+
 
 class static_files():
     ''' 
@@ -37,6 +39,16 @@ class index():
             
         return results               # Return empty JSON String
 
+    @route('/nearby/:country/:post' , method='GET')
+    def find_nearby(country,post):
+        (isFound, result) = nearby_zip( country , post)
+        configure( response)
+        if (isFound == False) :
+            response.status=404
+
+        return result;
+
+
 def configure(response):
     '''
     Configure:
@@ -46,7 +58,83 @@ def configure(response):
     response['Content-Type']='application/json'        # Specify MIME type to be JSON
     response['charset']='UTF-8'                        # Speciify Charset for browser viewing
     response['Access-Control-Allow-Origin']='*'        # Enables CORS for XHR request
+    response['Vary']='Accept-Encoding'
     pass
+
+
+def nearby_zip(country,code):
+    '''
+    Looks up nearby postcodes given country and postal code
+    Returns results for JSON response
+    '''
+    post = list(db['nearby'].find({'post code' : code.upper(), 
+                                   'country abbreviation': country.upper() }) )
+
+    if  len(post) >= 1 :
+        lon = float( post[0]['longitude'] )
+        lat = float( post[0]['latitude'] )
+        ( success, nearby ) =  nearby_query( lat, lon )
+
+        if success: 
+            response = { 'near latitude': lat,      # Record the query lat
+                        'near longitude': lon,      # Record the query lat
+                        'nearby' : nearby[1:] } 
+            content = json.dumps( response , default=json_util.default )
+            return (True, content)
+
+    content = json.dumps({})
+    isFound = False;
+    return (isFound,content)
+
+def nearby_coordinates( lat, lon):
+    '''
+    Looks up nearby postcodes given a latitude or longitude
+    Returns results formatted for Json Result
+    '''
+
+    (isFound, nearby ) = nearby_query( float(lon) , float(lat)  ) 
+    
+    if isFound :
+        results = {  'near latitude': lat,          # Record the query lat.
+                     'near longitude': lon,         # Record the query lon. 
+                     'nearby': nearby[:10] }
+        content = json.dumps( results, default=json_util.default ) 
+        return ( True, content)
+
+    else :
+        content = json.dumps( {} )
+        return ( False, content )  
+        
+
+def nearby_query(lat,lon):
+    '''
+    GeoSpatial  Query,
+    Given a specific latitude or longitude, this returns the closes 11 zipcodes
+    '''
+
+    nearby = db.command( SON ( [ ('geoNear' , 'nearby') ,           # Geospatial search
+                                 ('near' , [lon,lat] ) ,            # near given coordinates
+                                 ('distanceMultiplier' , 3959 ) ,   # Return values in miles
+                                 ('spherical', True ),              # Spherical 
+                                 ('num', 11) ] ) )                  # Results to return
+    if nearby['ok'] > 0 :
+        results = list()
+        for records in nearby['results'] :
+            places = records['obj']
+            places['distance'] = records['dis']
+            del places['loc']                       # Remove Coordinate info
+            del places['_id']                       # Remove mongo_id
+            del places['latitude']                  # Remove string latitude
+            del places['longitude']                 # Remove string long
+            del places['country']                   # Remove country 
+            del places['country abbreviation']      # Remove abbrevation
+            results.append(places)
+
+        return (True, results)
+    else :
+        isFound = False;
+        return (isFound,content);
+
 
 def standard_query(country,code):
     '''
@@ -79,10 +167,16 @@ def standard_query(country,code):
 
         return (isFound,content)    # Return True and JSON results
 
+
+# PRESENT GLOBAL
+ZIP = 'zip'
+NEARBY = 'nearby'
+
 with open(os.path.expanduser('~/environment.json')) as f:
     env = json.load(f)                                      # Extract environment variables
 
 connection = Connection( env['DOTCLOUD_DB_MONGODB_URL'] )   # Connect to be w/ env info
+#connection = Connection()
 db = Database(connection,'zip')                             # Get handle to ZIP db
 
 application = default_app()                                 # WSGI application
