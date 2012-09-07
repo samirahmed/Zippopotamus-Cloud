@@ -48,6 +48,14 @@ class index():
 
         return result;
 
+    @route('/:country/:state/:place', method='GET')
+    def find_postcode(country, state, place):
+        (isFound, results) = place_query(country, state, place)
+        configure(response)
+        if (isFound == False) :
+            response.status=404
+
+        return result;
 
 def configure(response):
     '''
@@ -166,7 +174,43 @@ def standard_query(country,code):
                             default=json_util.default)                 # Using pymongo json settings
 
         return (isFound,content)    # Return True and JSON results
+def place_query(country,state,place):
+    '''
+    Place_query returns JSON data if there are matching postcodes for a given
+    country abbreviation, state abbreviation, and place/city
+    '''
+    result = list(db['global'].find({'country abbreviation':country.upper(),
+                                     'state abbreviation':state.upper(),
+                                     'place name': {'$regex': place, '$options': '-i'}
+                                     }));
+    if len(result) < 1 :
+        content = json.dumps({});   #Empty JSON string
+        isFound = False             #We didn't find anything
+        return (isFound, content)
+    else:
+        country_name = result[0]['country']
+        country_abbv = result[0]['country abbreviation']
+        state        = result[0]['state']
+        state_abbv   = result[0]['state abbreviation']
+        place        = result[0]['place name']
 
+        for places in result:                           #Remove from each result
+            del places['_id']                           #Mongo ID
+            del places['state']                         #State
+            del places['state abbreviation']            #State abbreviation
+            del places['country']                       #Country
+            del places['country abbreviation']          #Country abbreviation
+
+        content = json.dumps({
+                'country': country_name,
+                'country abbreviation': country_abbv,
+                'state': state,
+                'state abbreviation': state_abbv,
+                'place name': place,
+                'places': result},
+                default=json_util.default)
+
+        return (isFound, content)   #Return True and JSON results
 
 # PRESENT GLOBAL
 ZIP = 'zip'
