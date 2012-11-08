@@ -8,11 +8,11 @@
 	<meta name="author" content="Samir Ahmed, Jeff Crowell">
 
 	<!-- Relations -->
-	<link rel="shortcut icon" href="/static/favicon.ico">
-	<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-	<link href="/static/style.css" rel="stylesheet">
-	<link href="/static/prettify.css" rel="stylesheet">
+	<link href="../static/style.css" rel="stylesheet">
+	<link href="../static/prettify.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
 	<style type="text/css">
@@ -21,13 +21,13 @@
 		padding-bottom: 40px;
 	}
 	</style>
-	
+
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-30975659-1']);
 	  _gaq.push(['_trackPageview']);
-	
+
 	  (function() {
 	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -35,7 +35,7 @@
 	  })();
 
 	</script>
-	
+
 </head>
 <body onload="prettyPrint()">
 
@@ -53,10 +53,10 @@
 						<li class="dropdown" id="samples">
 							<a href="#samples" data-toggle="dropdown" class="dropdown-toggle">Samples<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-			                     <li><a href="/static/sample_us.html">USA</a></li>
-			                     <li><a href="/static/sample_de.html">Germany</a></li>
-				                 <li><a href="/static/sample_fr.html">France</a></li>
-								 <li><a href="/static/sample_es.html">Spain</a></li>
+			                     <li><a href="../static/sample_us.html">USA</a></li>
+			                     <li><a href="../static/sample_de.html">Germany</a></li>
+				                 <li><a href="../static/sample_fr.html">France</a></li>
+								 <li><a href="../static/sample_es.html">Spain</a></li>
 							</ul>
 						</li>
 						<li><a href="#where">Countries</a></li>
@@ -64,7 +64,7 @@
 						<li><a href="https://github.com/samirahmed/Zippopotamus-Cloud">Code</a></li>
 						<li><a href="https://github.com/crowell/Zippopotamus">CrowdSource</a></li>
 					</ul>
-				</div><!--/.nav-collapse -->
+			</div><!--/.nav-collapse -->
 			</div>
 		</div>
 	</div>
@@ -72,15 +72,21 @@
 	<div class="container">
 
 		<br/>
-        <div class="alert alert-danger fade in">
-        <a class="close" data-dismiss="alert" >&times;</a>
-        <strong>Thanks dotCloud!</strong> Thanks to dotCloud's generous policy for legacy applications, Zippopotam.us lives on!</br> Anyone looking for a great cloud platform should give them a look!
-         </div>
+		<div class="alert alert-danger fade in">
+		<a class="close" data-dismiss="alert" >&times;</a>
+		<strong>Heads Up!</strong> To support international post code formats, we have adopted a new response format as of May-1st-2012
+		</div>
+		<div class="alert alert-danger fade in">
+		<a class="close" data-dismiss="alert" >&times;</a>
+		<strong>Thanks dotCloud!</strong> Thanks to dotCloud's generous policy for legacy applications, Zippopotam.us lives on! Anyone looking for a great cloud platform should give them a look!  
+		</div>
+
+
 		<!-- Main hero unit for a primary marketing message or call to action -->
 		<div id="what" class="hero-unit">
 			<div class="row-fluid">
 				<div class="span7">
-					<h1>Zip Code Galore!</h1> 
+					<h1>Zip Code Galore!</h1>
 					<p><h2>Zip·po·pot·amus  &ensp;&ensp;/&#x02c8;zip&#x014d;p&auml;t&#x0259;m&#x0259;s/</h2></p>
 					<p>Postal Codes and Zip Codes made easy</p>
 					<li><p>Free API with JSON Response Format</p></li>
@@ -88,8 +94,8 @@
 					<li><p>Perfect for Form Autocompletion</p></li>
 					<li><p>Open for Crowdsourcing and Contribution</p></li>
 				</div>
-				<div class="span5">	
-					<img src="/static/lilz.png"/>
+				<div class="span5">
+					<img src="../static/lilz.png"/>
 				</div>
 			</div>
 			<hr/>
@@ -101,29 +107,25 @@
 					<p><span style="font-family: Monaco, Consolas, 'Lucida Console', monospace; font-size: 17px;">
 						Structure: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">country</span>/<span style="color:darkgreen;">postal-code</span><br/>
 						Example: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">us</span>/<span style="color:darkgreen;">90210</span><br/>
-						NEW! City->Zip: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">country</span>/<span style="color:darkgreen;">state</span>/<span style="color:goldenrod;">city</span><br/>
-						Example: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">us</span>/<span style="color:darkgreen;">ma</span>/<span style="color:goldenrod;">belmont</span><br/>
-						NEW! Nearby: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">nearby</span>/<span style="color:darkgreen;">country</span>/<span style="color:goldenrod;">postalcode</span><br/>
-						Example: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">nearby</span>/<span style="color:darkgreen;">us</span>/<span style="color:goldenrod;">02478</span><br/>
 					</span>
 				</div>
 			</div>
 			<hr/>
 			<div class='row-fluid'>
 				<div class="span4">
-					<strong style="font-size:20px;">Autocomplete Examples:</strong> 
+					<strong style="font-size:20px;">Autocomplete Examples:</strong>
 				</div>
 				<div class="span2">
-					<a href="/static/sample_us.html" class="example" >USA</a>
+					<a href="../static/sample_us.html" class="example" >USA</a>
 				</div>
 				<div class="span2">
-					<a href="/static/sample_de.html" class="example">Germany</a>
+					<a href="../static/sample_de.html" class="example">Germany</a>
 				</div>
 				<div class="span2">
-					<a href="/static/sample_es.html" class="example" >Spain</a>
+					<a href="../static/sample_es.html" class="example" >Spain</a>
 				</div>
 				<div class="span1">
-					<a href="/static/sample_fr.html" class="example">France</a>
+					<a href="../static/sample_fr.html" class="example">France</a>
 				</div>
 
 			</div>
@@ -262,7 +264,7 @@ client.send();
 		<div id="who" class="row">
 			<div class="span4">
 				<h2>Samir Ahmed</h2>
-				<iframe src="http://githubbadge.appspot.com/badge/samirahmed?a=0" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder=0></iframe>          
+				<iframe src="http://githubbadge.appspot.com/badge/samirahmed?a=0" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder=0></iframe>
 				<p><a class="btn btn-inverse" href="http://twitter.com/#!/samirahmed">Twitter &raquo;</a></p>
 			</div>
 			<div class="span4">
@@ -273,7 +275,7 @@ client.send();
 			<div class="span4">
 				<h2>License</h2>
 				<p>This Zippopotam.us API is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/</p>
-				<br/>  
+				<br/>
 				<p><a class="btn btn-inverse btn-small" href="http://opendatacommons.org/licenses/odbl/1.0/">View details &raquo;</a></p>
 			</div>
 		</div>
@@ -285,9 +287,9 @@ client.send();
 		</footer>
 
 	</div> <!-- /container -->
-	<script type="text/javascript" src="/static/prettify.js"></script>
-	<script type="text/javascript" src="/static/bootstrap/js/bootstrap-alert.js"></script>
-	<script type="text/javascript" src="/static/bootstrap/js/bootstrap-dropdown.js"></script>
+	<script type="text/javascript" src="../static/prettify.js"></script>
+	<script type="text/javascript" src="../static/bootstrap/js/bootstrap-alert.js"></script>
+	<script type="text/javascript" src="../static/bootstrap/js/bootstrap-dropdown.js"></script>
 
 </body>
 </html>
