@@ -107,6 +107,8 @@
 					<p><span style="font-family: Monaco, Consolas, 'Lucida Console', monospace; font-size: 17px;">
 						Structure: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">country</span>/<span style="color:darkgreen;">postal-code</span><br/>
 						Example: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">us</span>/<span style="color:darkgreen;">90210</span><br/>
+						NEW! City->Zip: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">country</span>/<span style="color:darkgreen;">state</span>/<span style="color:darkpurple;">city</span><br/>
+						Example: <span style="color:darkblue;">api.zippopotam.us</span>/<span style="color:darkred;">us</span>/<span style="color:darkgreen;">ma</span>/<span style="color:darkpurple;">belmont</span><br/>
 					</span>
 				</div>
 			</div>
@@ -134,7 +136,7 @@
 		<div id="how" class="hero-unit">
 			<h1>How to use it!</h1>
 			<br/>
-			<p>Its JSON! Here is a simple javascript example</p>
+			<p>It's JSON! Here is a simple javascript example</p>
 			<pre class="prettyprint">
 &lt;script type="text/javascript"&gt;
 var client = new XMLHttpRequest();
