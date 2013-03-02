@@ -20,7 +20,7 @@ class static_files():
     '''
     @route('/crossdomain.xml')
     def xdomain():
-        return serve('crossdomain.xml')
+        return static_file('crossdomain.xml', root='./static')
 
 class index():
     '''
