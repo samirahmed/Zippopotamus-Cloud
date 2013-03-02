@@ -15,6 +15,12 @@ class static_files():
     def serve(path):
         return static_file(path, root='./static')
 
+    '''
+    Serve cross domain on seperate route
+    '''
+    @route('/crossdomain.xml')
+    def xdomain():
+        return serve('crossdomain.xml')
 
 class index():
     '''
