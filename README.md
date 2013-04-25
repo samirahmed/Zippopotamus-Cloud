@@ -1,5 +1,13 @@
 # Zippopotamus Cloud
 
+---
+
+## API DOWN TEMPORARILY (APRIL 24 2013)
+
+### we are moving off DotCloud.com due to a policy change and expect to be up again in a few days
+
+---
+
 This is a repository for  [Zippopotamus](http://www.zippopotam.us) the global postal code API
 
 Zippopotamus is hosted by [dotCloud](http://dotCloud.com). This repo is used to build and maintain the site.
