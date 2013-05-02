@@ -74,7 +74,7 @@
 		<br/>
         <div class="alert alert-danger fade in">
         <a class="close" data-dismiss="alert" >&times;</a>
-        <strong>Thanks dotCloud!</strong> Thanks to dotCloud's generous policy for legacy applications, Zippopotam.us lives on!</br> Anyone looking for a great cloud platform should give them a look!
+         aaaaaand we're back! we move to a temporary host at Boston University while we try and find zippopotam.us a new home. Please be patient if you experience any downtime
          </div>
 		<!-- Main hero unit for a primary marketing message or call to action -->
 		<div id="what" class="hero-unit">

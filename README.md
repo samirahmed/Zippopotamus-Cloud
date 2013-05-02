@@ -2,9 +2,11 @@
 
 ---
 
-## API DOWN TEMPORARILY (APRIL 24 2013)
+### Temporarily Up again!
 
-### we are moving off DotCloud.com due to a policy change and expect to be up again in a few days
+After a week of 404-ing we are back (April 26 2013 - May 2nd 2013)! 
+
+dotCloud.com has moved to a different business model and our app was no longer supported (but there was a little miscommunication about this). We apologize for the downtime, but we have found temporary shelter thanks to the fine folks at [Boston University's BUILDS hackerspace](http://builds.cc/).
 
 ---
 

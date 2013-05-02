@@ -221,13 +221,6 @@ def place_query(country,state,place):
 ZIP = 'zip'
 NEARBY = 'nearby'
 
-with open(os.path.expanduser('~/environment.json')) as f:
-    env = json.load(f)                                      # Extract environment variables
-
-connection = Connection( env['DOTCLOUD_DB_MONGODB_URL'] )   # Connect to be w/ env info
-#connection = Connection()
-db = Database(connection,'zip')                             # Get handle to ZIP db
-
-application = default_app()                                 # WSGI application
-
-#run (host='localhost', port=8080)                          # Local Testing
+connection = Connection()
+db = Database(connection,'zip')                        # Get handle to ZIP db
+run (host='0.0.0.0', port=80)                          # Local Testing
