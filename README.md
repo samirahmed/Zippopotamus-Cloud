@@ -2,9 +2,18 @@
 
 ---
 
-## API DOWN TEMPORARILY (APRIL 24 2013)
+## API SHUTTING DOWN (JUNE 30th 2013)
 
-### we are moving off DotCloud.com due to a policy change and expect to be up again in a few days
+Our full crowd-source zip-db can be found 
+[here](https://mega.co.nz/#!jkRwHZLB!ZTEy5QI8zg7KZd32y6RD-kY5njJFptb67at7AdZtBS4)
+
+For alternatives you can use [Ziptastic](http://daspecster.github.io/ziptastic)
+
+We apologize for the inconvenience, but we had been over time our priorities have changed and we can no long offer the service.
+
+Thanks,
+
+Jeff & Samir
 
 ---
 

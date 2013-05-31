@@ -1,6 +1,6 @@
 {
     "push_branch": null, 
-    "application": "zippo", 
-    "version": "0.9.1", 
+    "application": "zippopotamus", 
+    "version": "0.9.5", 
     "push_protocol": "rsync"
 }
