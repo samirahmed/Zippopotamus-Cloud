@@ -2,16 +2,14 @@
 
 ---
 
-## API SHUTTING DOWN (JUNE 30th 2013)
+## API Moved
 
 Our full crowd-source zip-db can be found 
 [here](https://mega.co.nz/#!jkRwHZLB!ZTEy5QI8zg7KZd32y6RD-kY5njJFptb67at7AdZtBS4)
 
-For alternatives you can use [Ziptastic](http://daspecster.github.io/ziptastic)
+Trea has taken over Zippopotamus - you can find it at the [ekotechnology fork](https://github.com/ekotechnology/Zippopotamus-Cloud)
 
-We apologize for the inconvenience, but we had been over time our priorities have changed and we can no long offer the service.
-
-Thanks,
+Thanks
 
 Jeff & Samir
 
